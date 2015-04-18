@@ -49,10 +49,19 @@ for i in range(numSt, numSt + 20):
         age = re.findall(reg, html)
         record.extend(age)
 
+        #获取  借入等级信息
+        reg = r'<[bs]>([0-9]+)</[bs]>'
+        list = re.findall(reg, html)
+        record.extend(list[:4])
+
+        reg = r'class="txc">([-0-9]+)'
+        list = re.findall(reg, html)
+        record.extend(list)
+
+        reg = r'([0-9]+) 分</p>'
+        list = re.findall(reg, html)
+        record.extend(list)
+
         for value in record:
             print value,
         print
-
-
-
-
